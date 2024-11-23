@@ -1,0 +1,48 @@
+Traceback (most recent call last):
+  File "/var/www/MISP/app/files/scripts/mispzmq/mispzmq.py", line 234, in <module>
+    mzq.main()
+  File "/var/www/MISP/app/files/scripts/mispzmq/mispzmq.py", line 198, in main
+    data = self.redis.blpop(lists, timeout=10)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/redis/commands/core.py", line 2588, in blpop
+    return self.execute_command("BLPOP", *keys)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/redis/client.py", line 567, in _execute_command
+    return conn.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/redis/retry.py", line 65, in call_with_retry
+    fail(error)
+  File "/usr/local/lib/python3.12/site-packages/redis/client.py", line 571, in <lambda>
+    lambda error: self._disconnect_raise(conn, error),
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/redis/client.py", line 555, in _disconnect_raise
+    raise error
+  File "/usr/local/lib/python3.12/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+           ^^^^
+  File "/usr/local/lib/python3.12/site-packages/redis/client.py", line 568, in <lambda>
+    lambda: self._send_command_parse_response(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/redis/client.py", line 542, in _send_command_parse_response
+    return self.parse_response(conn, command_name, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/redis/client.py", line 584, in parse_response
+    response = connection.read_response()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/redis/connection.py", line 592, in read_response
+    response = self._parser.read_response(disable_decoding=disable_decoding)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/redis/_parsers/resp2.py", line 15, in read_response
+    result = self._read_response(disable_decoding=disable_decoding)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/redis/_parsers/resp2.py", line 25, in _read_response
+    raw = self._buffer.readline()
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/redis/_parsers/socket.py", line 115, in readline
+    self._read_from_socket()
+  File "/usr/local/lib/python3.12/site-packages/redis/_parsers/socket.py", line 68, in _read_from_socket
+    raise ConnectionError(SERVER_CLOSED_CONNECTION_ERROR)
+redis.exceptions.ConnectionError: Connection closed by server.

@@ -1,0 +1,16 @@
+{
+  "description": "IP ranges assigned to Apple",
+  "list": [
+    "17.0.0.0/8"
+  ],
+  "matching_attributes": [
+    "ip-src",
+    "ip-dst",
+    "domain|ip",
+    "ip-src|port",
+    "ip-dst|port"
+  ],
+  "name": "List of known Apple IP ranges",
+  "type": "cidr",
+  "version": 20240422
+}

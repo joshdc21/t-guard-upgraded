@@ -46,7 +46,7 @@ while true; do
         sudo docker compose up -d
         ;;
     6)
-        cd misp
+        cd misp-docker
         IP=$(curl -s ip.me -4)
         sed -i "s|BASE_URL=.*|BASE_URL='https://$IP:1443'|" template.env
         sudo docker compose up -d
